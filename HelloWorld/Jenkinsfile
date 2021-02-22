@@ -12,6 +12,13 @@ pipeline{
                      git 'https://github.com/sreelakshmi665/HelloWorld.git'
                 }
             }
+             stage('Clean')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml clean'
+            }
+        }
+            
              stage('Validate')
         {
             steps{
@@ -28,7 +35,7 @@ pipeline{
             steps{
                 withSonarQubeEnv('sonar-server'){
                     withMaven(maven:'Maven'){
-                        bat 'mvn sonar:sonar'
+                        bat 'mvn -f HelloWorld/pom.xml sonar:sonar'
                     }
                 }
             }
