@@ -65,6 +65,30 @@ pipeline{
                 bat 'mvn -f HelloWorld/pom.xml install'
             }
         }
+            stage('Artifactory')
+    {
+      steps{
+        archiveArtifacts artifacts:'HelloWorld/target/*.jar',followSymlinks:false
+      }
+    }
+    stage('Deploy-To-Artifactory')
+    {
+      steps{
+        rtUpload(
+          serverId:'artifactory-server',
+          spec: '''{
+          "files": [
+            {
+              "pattern": "HelloWorld/target/*.jar",
+              "target": "art-doc-dev-loc"
+            }
+         ]
+    }''',
+           buildName: 'holyFrog',
+    buildNumber: '42'
+)
+  }
+}
             
             
            
