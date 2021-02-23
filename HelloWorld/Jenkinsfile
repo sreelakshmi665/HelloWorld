@@ -50,7 +50,7 @@ pipeline{
         stage('Package')
         {
             steps{
-                bat 'mvn package'
+                bat 'mvn -f HelloWorld/pom.xml package'
             }
         }
         stage('Verify')
