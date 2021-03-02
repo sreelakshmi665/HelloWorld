@@ -15,20 +15,20 @@ pipeline{
              stage('Clean')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml clean'
+                sh 'mvn -f HelloWorld/pom.xml clean'
             }
         }
             
              stage('Validate')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml validate'
+                sh 'mvn -f HelloWorld/pom.xml validate'
             }
         }
         stage('Compile')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml compile'
+                sh 'mvn -f HelloWorld/pom.xml compile'
             }
         }
         /*stage('sonar analysis'){
@@ -49,25 +49,25 @@ pipeline{
         stage('Test')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml test'
+                sh 'mvn -f HelloWorld/pom.xml test'
             }
         }
         stage('Package')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml package'
+                sh 'mvn -f HelloWorld/pom.xml package'
             }
         }
         stage('Verify')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml verify'
+                sh 'mvn -f HelloWorld/pom.xml verify'
             }
         }
         stage('Install')
         {
             steps{
-                bat 'mvn -f HelloWorld/pom.xml install'
+                sh 'mvn -f HelloWorld/pom.xml install'
             }
         }
             /*stage('Artifactory')
