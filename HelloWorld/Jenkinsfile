@@ -31,7 +31,7 @@ pipeline{
                 bat 'mvn -f HelloWorld/pom.xml compile'
             }
         }
-        stage('sonar analysis'){
+        /*stage('sonar analysis'){
             steps{
                 withSonarQubeEnv('sonar-server'){
                     withMaven(maven:'Maven'){
@@ -45,7 +45,7 @@ pipeline{
             steps {
                 waitForQualityGate abortPipeline: true
             }
-        }
+        }*/
         stage('Test')
         {
             steps{
@@ -70,7 +70,7 @@ pipeline{
                 bat 'mvn -f HelloWorld/pom.xml install'
             }
         }
-            stage('Artifactory')
+            /*stage('Artifactory')
     {
       steps{
         archiveArtifacts artifacts:'HelloWorld/target/*.jar',followSymlinks:false
@@ -111,7 +111,7 @@ pipeline{
          changed {  
              echo 'This will run only if the state of the Pipeline has changed'  
              echo 'For example, if the Pipeline was previously failing but is now successful'  
-         }  
+         }*/  
      }      
             
 }
